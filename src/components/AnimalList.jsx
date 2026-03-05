@@ -40,7 +40,15 @@ function AnimalList() {
   return (
     <section>
       <h2>Animals:</h2>
-      <ul>{HTMLAnimals}</ul>
+      {/* No es para nada necesario poner el style, pero así queda mejor */}
+      <ul
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+        }}
+      >
+        {HTMLAnimals}
+      </ul>
     </section>
   );
 }

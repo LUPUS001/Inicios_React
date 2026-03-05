@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 function MovieList() {
   const movies = ["Lord of the Rings", "Star Wars", "Brüno", "Lego Batman"];
 
@@ -9,6 +11,16 @@ function MovieList() {
       </p>
     );
   });
+
+  useEffect(() => {
+    console.log("MovieList mounted");
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      console.log("MovieList unmounted");
+    };
+  }, []);
 
   return (
     <section>
