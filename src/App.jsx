@@ -5,10 +5,6 @@ import ButtonComponent from "./components/ButtonComponent";
 import Login from "./components/Login";
 
 function App() {
-  const [number, setNumber] = useState(0);
-  const [myValue, setMyValue] = useState("");
-  const myPlaceholder = "Escribe aquí";
-
   const [greetings, setGreetings] = useState("Bienvenidos a mi web!");
   const links = {
     home: "Home",
@@ -17,6 +13,8 @@ function App() {
     contact: "Contact us",
   };
 
+  const condition = true;
+
   const [user, setUser] = useState({});
 
   const login = (userInfo) => {
@@ -24,40 +22,23 @@ function App() {
     setUser(userInfo);
   };
 
-  const addOne = () => {
-    setNumber(number + 1);
-    console.log(number);
-  };
-
-  const sayHello = () => {
-    console.log("Hello!");
-  };
-
-  const handleChange = (e) => {
-    console.log(e.target.value);
-  };
-
   return (
     <>
       <HeaderComponent greetings={greetings} links={links}></HeaderComponent>
 
       <main className="main-content">
-        <h2 onClick={sayHello}>Hola {user.username}</h2>
+        {user.username && <h2>Hola {user.username}</h2>}
 
         <Login handleLogin={login}></Login>
 
-        <h2 onClick={addOne}>Number: {number}</h2>
+        {condition && <h2>La condición se ha cumplido</h2>}
+        {!condition && <h2>La condición no se ha cumplido</h2>}
 
-        <input
-          value={myValue}
-          placeholder={myPlaceholder}
-          type="text"
-          onChange={handleChange}
-        />
-        <br />
-        <br />
-
-        <ButtonComponent />
+        {condition ? (
+          <h2>La condición se ha cumplido</h2>
+        ) : (
+          <h2>La condición no se ha cumplido</h2>
+        )}
       </main>
     </>
   );
