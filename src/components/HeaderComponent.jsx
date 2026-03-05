@@ -1,31 +1,29 @@
 import "./HeaderComponent.css";
 
-function HeaderComponent(props) {
-  const { greetings, links } = props;
-
+function HeaderComponent() {
   return (
     <header className="header">
-      <h1 className="title">{greetings}</h1>
+      <h1 className="title">Bienvenidos!</h1>
       <nav>
         <ul className="header-list">
           <li>
             <a className="link" href="#">
-              {links.home}
+              Home
             </a>
           </li>
           <li>
             <a className="link" href="#">
-              {links.blog}
+              Blog
             </a>
           </li>
           <li>
             <a className="link" href="#">
-              {links.news}
+              Hello
             </a>
           </li>
           <li>
             <a className="link" href="#">
-              {links.contact}
+              Contact us
             </a>
           </li>
         </ul>
