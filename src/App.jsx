@@ -40,11 +40,6 @@ function App() {
         <h2>Hola {user.username}</h2>
 
         <Login handleLogin={login}></Login>
-
-        <button onClick={() => setShowMovies(!showMovies)}>
-          Toggle Movies
-        </button>
-        {showMovies && <MovieList></MovieList>}
       </main>
     </>
   );
