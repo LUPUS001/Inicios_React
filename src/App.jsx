@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import HeaderComponent from "./components/HeaderComponent";
 import ButtonComponent from "./components/ButtonComponent";
+import Login from "./components/Login";
 
 function App() {
   const [number, setNumber] = useState(0);
@@ -14,6 +15,13 @@ function App() {
     blog: "Blog",
     news: "News",
     contact: "Contact us",
+  };
+
+  const [user, setUser] = useState({});
+
+  const login = (userInfo) => {
+    console.log(userInfo);
+    setUser(userInfo);
   };
 
   const addOne = () => {
@@ -34,8 +42,9 @@ function App() {
       <HeaderComponent greetings={greetings} links={links}></HeaderComponent>
 
       <main className="main-content">
-        <h2 onClick={sayHello}>Hola a todos!</h2>
-        <br />
+        <h2 onClick={sayHello}>Hola {user.username}</h2>
+
+        <Login handleLogin={login}></Login>
 
         <h2 onClick={addOne}>Number: {number}</h2>
 
