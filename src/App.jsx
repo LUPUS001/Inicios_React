@@ -8,6 +8,14 @@ function App() {
   const [myValue, setMyValue] = useState("");
   const myPlaceholder = "Escribe aquí";
 
+  const [greetings, setGreetings] = useState("Bienvenidos a mi web!");
+  const links = {
+    home: "Home",
+    blog: "Blog",
+    news: "News",
+    contact: "Contact us",
+  };
+
   const addOne = () => {
     setNumber(number + 1);
     console.log(number);
@@ -23,7 +31,7 @@ function App() {
 
   return (
     <>
-      <HeaderComponent />
+      <HeaderComponent greetings={greetings} links={links}></HeaderComponent>
 
       <main className="main-content">
         <h2 onClick={sayHello}>Hola a todos!</h2>
