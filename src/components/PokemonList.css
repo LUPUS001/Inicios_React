@@ -1,0 +1,6 @@
+.pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+/* Este CSS nos ayuda a que no se vea como una sola columna */
