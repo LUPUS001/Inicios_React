@@ -1,3 +1,4 @@
+// Este jsx decide que se muestra en título y la lista.
 import "./App.css";
 import PokemonList from "./components/PokemonList";
 
