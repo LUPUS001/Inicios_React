@@ -1,12 +1,13 @@
 import "./PokemonList.css";
 import { useEffect, useState } from "react";
 import PokemonCard from "./PokemonCard";
+import GetForm from "./GetForm";
 
 function PokemonList(props) {
   const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
-    getPokemons(10);
+    getPokemons(1, 10);
   }, []);
 
   const fetchPokemon = async (index) => {
@@ -15,10 +16,10 @@ function PokemonList(props) {
     return data;
   };
 
-  const getPokemons = async (quantity) => {
+  const getPokemons = async (from, to) => {
     const pokemonArray = [];
 
-    for (let i = 1; i <= quantity; i++) {
+    for (let i = from; i <= to; i++) {
       const pokemonObtenido = await fetchPokemon(i);
       pokemonArray.push(pokemonObtenido);
     }
@@ -36,7 +37,12 @@ function PokemonList(props) {
     );
   });
 
-  return <ul className="pokemon-list">{pokemonCards}</ul>;
+  return (
+    <div>
+      <GetForm getPokemons={getPokemons}></GetForm>
+      <ul className="pokemon-list">{pokemonCards}</ul>;
+    </div>
+  );
 }
 
 export default PokemonList;

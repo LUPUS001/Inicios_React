@@ -1,29 +1,66 @@
+/* El CSS original estaba pensado para que solamente enseñaramos la estadística de vida, por lo que al intentar mostrar todos los stats, 
+la tarjeta/card se cortaría al mostrarla con los detalles, es por eso que he cambiado el CSS para q
+*/
 .selected-pokemon {
   display: flex;
   justify-content: center;
+  padding: 20px;
 
   .pokemon-container {
-    width: 300px;
-    height: 400px;
+    width: 320px;
+    /* Cambiamos height fija por min-height para que quepan todos los stats */
+    min-height: 500px;
     background-color: blueviolet;
     color: white;
-    padding: 10px;
-    border: 3px solid black;
+    padding: 20px;
+    border: 4px solid #333;
+    border-radius: 15px; /* Bordes redondeados para que parezca más una carta */
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
 
-    .text {
-      margin: 0;
-    }
-
     .pokemon-name {
-      margin: 0;
+      text-transform: capitalize; /* Para que el nombre empiece por Mayúscula */
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+      width: 100%; /* Para que la línea de debajo del nombre no se corte y se quede pequeña */
+      text-align: center;
     }
 
     .pokemon-img {
+      width: 150px; /* Tamaño más controlado para dejar espacio a los stats */
+      height: 150px;
+      background-color: rgba(
+        255,
+        255,
+        255,
+        0.1
+      ); /* Para que se vea un fondo sobre la imagen y quede mejor */
+      border-radius: 50%; /* Para que este fondo quede redondo */
+      margin: 10px 0;
+    }
+
+    /* Estilos para la lista de estadísticas */
+    ul {
       width: 100%;
+    }
+
+    .text {
+      font-size: 0.9rem; /* 0.9 las stats y 1.1 el total para que este se vea un poco más grande y quede mejor */
+      padding: 4px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Estilo especial para el Total */
+    h4.text {
+      font-size: 1.1rem;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: none;
     }
   }
 }
