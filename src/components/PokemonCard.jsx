@@ -1,20 +1,19 @@
 import "./PokemonCard.css";
 
 function PokemonCard(props) {
-  const { pokemon, selectPokemon } = props;
+  const { pokemon, selectPokemon } =
+    props; /* Esta línea nos evita tener que escribir "props.pokemon.name todo el rato" */
 
-  return pokemon.id ? (
+  return (
     <li className="pokemon-card" onClick={() => selectPokemon(pokemon)}>
-      <h2 className="pokemon-name">{pokemon.name}</h2>{" "}
+      <h2 className="pokemon-name">{pokemon.name}</h2>
       <img
         src={pokemon.sprites.front_default}
         alt="Pokemon image"
         className="pokemon-img"
       />
-      <h3 className="text">HP: {pokemon.stats[0].base_stat}</h3>{" "}
+      <p className="pokemon-id">Pokédex ID: {pokemon.id}</p>
     </li>
-  ) : (
-    <p className="loading">Loading...</p>
   );
 }
 
