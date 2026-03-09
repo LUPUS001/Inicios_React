@@ -12,7 +12,7 @@ function PokemonCard(props) {
         alt="Pokemon image"
         className="pokemon-img"
       />
-      <p className="pokemon-id">Pokédex ID: {pokemon.id}</p>
+      <p className="pokemon-id">#{String(pokemon.id).padStart(3, "0")}</p>
     </li>
   );
 }
