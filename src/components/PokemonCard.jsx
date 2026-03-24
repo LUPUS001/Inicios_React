@@ -1,9 +1,6 @@
 import "./PokemonCard.css";
 
-function PokemonCard(props) {
-  const { pokemon, selectPokemon } =
-    props; /* Esta línea nos evita tener que escribir "props.pokemon.name todo el rato" */
-
+function PokemonCard({ pokemon, selectPokemon }) {
   return (
     <li className="pokemon-card" onClick={() => selectPokemon(pokemon)}>
       <h2 className="pokemon-name">{pokemon.name}</h2>

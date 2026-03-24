@@ -1,40 +1,58 @@
 import { useState } from "react";
 
-function GetForm(props) {
+function GetForm({ getPokemons }) {
   const [from, setFrom] = useState(1);
   const [to, setTo] = useState(10);
 
   const handleFromInput = (e) => {
-    setFrom(e.target.value);
+    const value = parseInt(e.target.value);
+    setFrom(isNaN(value) ? 1 : value);
   };
 
   const handleToInput = (e) => {
-    setTo(e.target.value);
+    const value = parseInt(e.target.value);
+    setTo(isNaN(value) ? 1 : value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.getPokemons(from, to);
+    if (from > to) {
+      alert("El rango 'Desde' no puede ser mayor que 'Hasta'");
+      return;
+    }
+    if (from < 1 || to < 1) {
+      alert("Los ID de Pokemon deben ser mayores que 0");
+      return;
+    }
+    getPokemons(from, to);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="get-pokemon-form" onSubmit={handleSubmit}>
       <fieldset>
-        <label htmlFor="from-pokemon">From: </label>
+        <label htmlFor="from-pokemon">Desde: </label>
         <input
           type="number"
           id="from-pokemon"
           min={1}
+          value={from}
           onChange={handleFromInput}
         />
       </fieldset>
       <fieldset>
-        <label htmlFor="to-pokemon">To: </label>
-        <input type="number" id="to-pokemon" onChange={handleToInput} />
+        <label htmlFor="to-pokemon">Hasta: </label>
+        <input 
+          type="number" 
+          id="to-pokemon" 
+          min={1}
+          value={to}
+          onChange={handleToInput} 
+        />
       </fieldset>
-      <button>Get Pokemon!!</button>
+      <button type="submit" className="get-button">¡Obtener Pokemon!</button>
     </form>
   );
 }
 
 export default GetForm;
+

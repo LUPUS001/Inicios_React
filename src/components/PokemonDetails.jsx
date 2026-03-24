@@ -1,7 +1,8 @@
 import "./PokemonDetails.css";
 
-function PokemonDetails(props) {
-  const { pokemon } = props;
+function PokemonDetails({ pokemon }) {
+  const stats = pokemon.stats.map(s => s.base_stat);
+  const totalStats = stats.reduce((acc, curr) => acc + curr, 0);
 
   return (
     <section className="selected-pokemon">
@@ -12,29 +13,21 @@ function PokemonDetails(props) {
           alt="pokemon image"
           className="pokemon-img"
         />
-        <ul>
+        <ul className="stats-list">
           <li className="text">HP: {pokemon.stats[0].base_stat}</li>
           <li className="text">Attack: {pokemon.stats[1].base_stat}</li>
           <li className="text">Defense: {pokemon.stats[2].base_stat}</li>
           <li className="text">Special Attack: {pokemon.stats[3].base_stat}</li>
-          <li className="text">
-            Special Defense: {pokemon.stats[4].base_stat}
-          </li>
+          <li className="text">Special Defense: {pokemon.stats[4].base_stat}</li>
           <li className="text">Speed: {pokemon.stats[5].base_stat}</li>
         </ul>
-        <h4 className="text">
-          Total:{" "}
-          {pokemon.stats[0].base_stat +
-            pokemon.stats[1].base_stat +
-            pokemon.stats[2].base_stat +
-            pokemon.stats[3].base_stat +
-            pokemon.stats[4].base_stat +
-            pokemon.stats[5].base_stat}
+        <h4 className="total-stats">
+          Total: {totalStats}
         </h4>
-        <br />
       </div>
     </section>
   );
 }
+
 
 export default PokemonDetails;
