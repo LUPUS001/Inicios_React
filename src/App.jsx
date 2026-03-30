@@ -2,11 +2,20 @@ import { useState } from "react";
 import "./App.css";
 import HeaderComponent from "./components/HeaderComponent";
 import ButtonComponent from "./components/ButtonComponent";
+import ProbandoComponent from "./components/ProbandoComponent";
 
 function App() {
   const [number, setNumber] = useState(0);
   const [myValue, setMyValue] = useState("");
   const myPlaceholder = "Escribe aquí";
+
+  const [greetings, setGreetings] = useState("Bienvenidos a mi web!");
+  const links = {
+    home: "Home",
+    blog: "Blog",
+    news: "News",
+    contact: "Contact us",
+  };
 
   const addOne = () => {
     setNumber(number + 1);
@@ -18,12 +27,13 @@ function App() {
   };
 
   const handleChange = (e) => {
+    // Comparalo con el handleChange de ProbandoComponent y fijate en como por una simple línea puede parecer que no funciona
     console.log(e.target.value);
   };
 
   return (
     <>
-      <HeaderComponent />
+      <HeaderComponent greetings={greetings} links={links}></HeaderComponent>
 
       <main className="main-content">
         <h2 onClick={sayHello}>Hola a todos!</h2>
@@ -40,7 +50,20 @@ function App() {
         <br />
         <br />
 
-        <ButtonComponent />
+        <ButtonComponent myValue={myValue} setMyValue={setMyValue} />
+
+        <br />
+        <br />
+        <hr />
+        <h4>Componente hijo que hereda los valores del padre</h4>
+
+        <ProbandoComponent
+          myValue={myValue}
+          setMyValue={setMyValue}
+          number={number}
+          setNumber={setNumber}
+          myPlaceholder={myPlaceholder}
+        />
       </main>
     </>
   );
